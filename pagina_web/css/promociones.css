@@ -1,0 +1,50 @@
+.tarjeta {
+    margin: 10px;
+    float: left;
+    display: flex;
+    height: 500px;
+    width: 350px;
+    background-color: white;
+    margin-left: 50px;
+    border-radius: 30px;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+    transition: transform 1s ease, border-color 1s ease, box-shadow 1s ease;
+    flex-direction: column;
+}
+
+.tarjeta:hover {
+    transform: scale(1.1);
+    border-color: #008bf8;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.img {
+    border-radius: 30px;
+    border: 5px solid #3e7c3b;
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 90%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.tarjeta h1 {
+    margin: 0;
+    padding: 10px;
+    color: #000000;
+}
+.descripcion {
+    margin-left: 5%;
+}
+.boton {
+    margin-bottom: 5%;
+    margin-left: 10%;
+    text-decoration: none;
+    width: 80%;
+    border-radius: 10px;
+    color: white;
+    text-align: center; 
+    background-color: #008bf8;
+    display: block; 
+    line-height: 40px;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login minimarket</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div>
+    <nav class="navegacion">
+        <ul class="lista">
+            <li>
+                <a href="index.html">Inicio</a>
+            </li>
+            <li>
+                <a href="categorias.html">Categorias</a>
+            </li>
+            <li>
+                <a href="sobrenosotros.html">Sobre nosotros</a>
+            </li>
+            <li>
+                <a href="promociones.html">Promociones</a>
+            </li>
+            <li>
+                <a href="contacto.html">Contacto</a>
+            </li>
+            <li>
+                <a href="login.html">Iniciar sesión</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+    <div class="form-container">
+        <p class="title">Iniciar sesión</p>
+        <form class="form" id="login-form">
+          <input type="text" id="login-cliente" class="input" placeholder="Correo o Usuario" >
+          <input type="password" id="login-contrasena" class="input" placeholder="Contraseña" >
+          <p class="page-link">
+            <span class="page-link-label">¿olvidaste tu contraseña?</span>
+          </p>
+          <button class="form-btn" type="submit">Ingresar</button>
+        </form>
+        <p class="sign-up-label">
+          ¿No tienes una cuenta?<span class="sign-up-link"><a href="register.html">Registrarse</a></span>
+        </p>
+        <div id="button-login" class="buttons-container">
+        </div>
+      </div>
+      <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const user = document.getElementById('login-cliente').value;
+            const password = document.getElementById('login-contrasena').value;
+
+            fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Inicio de sesión exitoso');
+                } else {
+                    alert('Usuario o CI incorrectos');
+                }
+            })
+            .catch(error => {
+                console.error('Error al iniciar sesión:', error);
+                alert('Error al iniciar sesión');
+            });
+        });
+      </script>
+</body>
+</html>

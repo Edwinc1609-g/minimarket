@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="google" value="notranslate"/>
+  <title>Gastos</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="css/gasto.css">
+  <link rel="icon" href="img/icono.png" type="img/icono.png">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+</div><nav class="main-menu">
+
+
+  
+  <div>
+     <a class="logo" href="#">
+     </a> 
+   </div> 
+ <div class="settings"></div>
+ <div class="scrollbar" id="style-1">
+       
+ <ul>
+   
+ <li class="darkerli">                                   
+ <a href="index.html">
+ <i class="fa fa-home fa-lg"></i>
+ <span class="nav-text">Inicio</span>
+ </a>
+ </li>
+ <li class="darkerli">
+   <a href="dashboard.html">
+   <i class="fa fa-desktop fa-lg"></i>
+   <span class="nav-text">DashBoard</span>
+   </a>
+   </li>
+    
+ <li class="darkerli">
+   <a href="factura_rapida.html">
+   <i class="fa fa-shopping-cart"></i>
+    <span class="nav-text">Factura Rapida (pos)</span>
+   </a>
+   </li>
+   <li class="darkerli">
+     <a href="ingresos.html">
+     <i class="fa fa-align-left fa-lg"></i>
+     <span class="nav-text">Ingresos
+     </span>
+     </a>
+     </li>
+   <li class="darkerli">
+     <a href="gastos.html">
+     <i class="fa fa-align-left fa-lg"></i>
+     <span class="nav-text">Gastos
+     </span>
+     </a>
+     </li>
+   <li class="darkerli">
+     <a href="inventario.html">
+     <i class="fa fa-desktop fa-lg"></i>
+     <span class="nav-text">Inventario</span>
+     </a>
+     </li>
+     <li class="darkerli">                                 
+       <a href="clientes.html">
+       <i class="fa fa-user fa-lg"></i>
+       <span class="nav-text">Clientes</span>
+       </a>
+       </li>
+     <li class="darkerli">                                 
+         <a href="proveedores.html">
+         <i class="fa fa-user fa-lg"></i>
+     <span class="nav-text">proveedores</span>
+         </a>
+      </li>
+ 
+ </ul>  
+ </nav>
+  
+  <div id="gastos">
+    <h1>Registro de gastos <span>Minimarket</span> El <span>Bambú</span></h1>
+    
+    <div id="botones">
+      <button type="button" id="buttonAñadir">
+        <span class="button__text">Agregar</span>
+        <span class="button__icon">
+        </span>
+      </button> 
+      <button id="refrescar" class="button" type="button">
+        <span class="button__text">Refresh</span>
+        <span class="button__icon">
+        </span>
+      </button>
+    </div>
+    
+    <table id="tabla-gastos" class="responstable">
+      <thead>
+        <tr>
+          <th>Id Gasto</th>
+          <th>Fecha</th>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Valor</th>
+          <th>Forma de pago</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody id="productos-table-body">
+      </tbody>
+    </table>
+  </div>
+  
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="cerrar">&times;</span>
+      <p class="formTitulo">Agregar Un Nuevo Gasto</p>
+      
+      <form id="gastoForm">
+        <label class="label_dise" for="Fecha"><span style="color: red;">*</span> Fecha:</label>
+        <input class="inputDise" type="date" id="fecha" name="Fecha" required>
+
+<div class="radio-buttons-container">
+<div class="radio-button">
+  <input  id="radio2" class="radio-button__input" type="radio" name="tipo" value="inventario" checked onclick="toggleInputType()">
+  <label for="radio2" class="radio-button__label">
+    <span class="radio-button__custom"></span>
+        
+        Inventario
+  </label>
+</div>
+<div class="radio-button">
+  <input  id="radio1" class="radio-button__input" type="radio" name="tipo" value="egreso" onclick="toggleInputType()">
+  <label for="radio1" class="radio-button__label">
+    <span class="radio-button__custom"></span>
+    
+    Egreso
+  </label>
+</div>
+</div>
+        <div id="additionalInput" class="group" style="display:none;">
+            <label for="additionalInfo">Gasto:</label>
+            <input class="input" type="text" id="additionalInfo" placeholder="Escribe aquí...">
+        </div>
+    
+        <div class="group" id="buscador_producto">
+            <label for="producto">Producto:</label>
+            <input class="input" type="text" id="producto" onkeyup="buscarProducto()" placeholder="Buscar producto...">
+            <div id="sugerencias" style="display: none; border: 1px solid #ccc; max-height: 200px; overflow-y: auto;"></div>
+
+        </div>
+    
+        <label for="cantidad">Cantidad:</label>
+        <input class="input" type="number" id="cantidad" placeholder="Cantidad">
+    
+        <label class="label_dise" for="valor"><span style="color: red;">*</span> Valor</label>
+        <input class="inputDise" type="number" step="0.01" id="valor" name="valor" required>
+    
+        <label class="label_dise" for="formaPago"><span style="color: red;">*</span> Forma de pago</label>
+        <input class="inputDise" type="text" id="formaPago" name="formaPago" required>
+    
+        <label class="label_dise" for="descripcion"><span style="color: red;">*</span> Descripción</label>
+        <input class="inputDise" type="text" id="descripcion" name="descripcion" required>
+    
+        <button type="button" id="agregargasto" class="modalButton">Agregar Gasto</button>
+        <button type="button" id="cancelar" class="modalButton">Cancelar</button>
+    </form>
+    
+    </div>
+  </div>
+</body>
+<script src="js/front_gastos.js"></script>
+<script src="js/gasto_inv.js"></script>
+</html>

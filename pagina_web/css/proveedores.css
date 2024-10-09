@@ -1,0 +1,40 @@
+#proveedores{
+    display: block;
+    margin: 10%;
+    width: 80%;
+    z-index: 1;
+}
+
+#cerrar:hover {
+    background-color: #e53935;
+  }
+  .btn-editar{
+    border: none;
+    background-color: #00bbbb;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .btn-editar:hover{
+   background-color: #00bbbb;
+   transform: scale(1.1);
+   transition: 0.1s;
+  
+  }
+  .btn-eliminar{
+    border: none;
+    background-color: #f44336;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .btn-eliminar:hover{
+    background-color: #f44336;
+    transform: scale(1.1);
+    transition: 0.1s;
+   
+   }
